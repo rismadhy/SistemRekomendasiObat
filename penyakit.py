@@ -89,32 +89,32 @@ def get_predicted_value(patient_symptoms):
 
 
 # Streamlit UI
-st.title("Sistem Rekomendasi Kesehatan")
-st.write("Pilih gejala yang Anda alami:")
+st.title("Health Recommendation System")
+st.write("Select the symptoms you are experiencing:")
 
 # Create multiple select box for symptoms
 symptoms_options = list(symptoms_dict.keys())
-selected_symptoms = st.multiselect("Gejala:", symptoms_options)
+selected_symptoms = st.multiselect("Symptoms:", symptoms_options)
 
-if st.button('Prediksi'):
+if st.button('Prediction'):
     if selected_symptoms:
         predicted_disease = get_predicted_value(selected_symptoms)
 
         desc, pre, med, die, wrkout = helper(predicted_disease)
 
-        st.write("**Penyakit yang Diprediksi:**", predicted_disease)
-        st.write("**Deskripsi:**", desc)
-        st.write("**Tindakan Pencegahan:**")
+        st.write("**Predicted Disease:**", predicted_disease)
+        st.write("**Description:**", desc)
+        st.write("**Precautions:**")
         for i, p in enumerate(pre, 1):
             st.write(f"{i}. {p}")
-        st.write("**Obat-obatan:**")
+        st.write("**Medications:**")
         for i, m in enumerate(med, 1):
             st.write(f"{i}. {m}")
         st.write("**Diet:**")
         for i, d in enumerate(die, 1):
             st.write(f"{i}. {d}")
-        st.write("**Latihan:**")
+        st.write("**Workout:**")
         for i, w in enumerate(wrkout, 1):
             st.write(f"{i}. {w}")
     else:
-        st.write("Silakan pilih gejala terlebih dahulu.")
+        st.write("Please select the symptoms first.")
